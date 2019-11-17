@@ -1,0 +1,20 @@
+#配置服务器信息
+server:
+  port: 9001
+
+spring:
+  application:
+    name: springcloud-consumer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+      register-with-eureka: false
+  instance:
+    instance-id: springcloud-consumer-9001
+    prefer-ip-address: true
+
+feign:
+  hystrix:
+    enabled: ture #feign开启hystrix，使其在api模块中的服务降级，统一处理熔断
