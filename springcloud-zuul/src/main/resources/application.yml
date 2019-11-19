@@ -2,7 +2,11 @@ server:
   port: 9527
 spring:
   application:
-    name: springcloud-study-zuul
+    name: springcloud-zuul
+#    禁用安全防护
+management:
+  security:
+    enabled: false
 
 eureka:
   instance:
@@ -14,14 +18,18 @@ eureka:
 
 # 配置zuul的路由映射规则
 zuul:
-  # 原真实服务名忽略，全部用"*"
-  ignored-services: study-springcloud-dept # 要用小写
-  # 加统一前缀，http://myzuul.com:9527/springcloud/mydept/dept/findById/1
+#    ignored-services: springcloud-consumer # 要用小写
+  ignored-services: "*" # 忽略全部服务
+  # 加统一前缀，http://myzuul.com:9527/my/mydept/dept/findById/1
   prefix: /my
   routes:
-    mydept.serviceId: springcloud-consumer
-    mydept.path: /zuul/**
-#consumer对外暴露路径：http://localhost:9527/my/zuul/feign/dept/findAll
+    #consumer对外暴露路径：http://localhost:9527/my/zuul/feign/dept/findAll
+    springcloud-consumer: /zuul/**
+    # 等价于
+#    mydept:  # mydept为 路由的名称
+#      serviceId: springcloud-consumer
+#      path: /zuul/**
+
 info:
   app.name: springcloud-study-zuul-gateway
   company.name: www.gxs.com

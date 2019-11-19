@@ -22,6 +22,9 @@ mybatis:
 
 eureka:
   client:
+    #     开启健康监控 要导入actuator依赖
+    healthcheck:
+      enabled: true
     service-url:
       defaultZone: http://localhost:7001/eureka
   instance:

@@ -1,7 +1,7 @@
 package com.fq.springcloud.consumer.controller;
 
+import com.fq.springcloud.consumer.service.FeignDeptService;
 import com.fq.springcloud.entities.Dept;
-import com.fq.springcloud.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +16,7 @@ import java.util.List;
 public class FeignConsumerController {
 
     @Autowired
-    private DeptService deptService;
+    private FeignDeptService deptService;
 
 
     @RequestMapping("feign/dept/findAll")
