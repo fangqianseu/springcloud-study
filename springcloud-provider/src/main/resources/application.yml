@@ -33,6 +33,13 @@ eureka:
     #    eureka管理页面 服务ip提示
     prefer-ip-address: true
 
+# sleuth 配置 trance追踪
+logging:
+  level:
+    root: info
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug
+
 info:
   app.name: springcloud-provider-info
   company.name: www.fq
